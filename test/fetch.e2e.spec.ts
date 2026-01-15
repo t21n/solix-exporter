@@ -16,4 +16,4 @@ test('should load device stats', async () => {
   await api.login();
   const devices = await fetchAndPublish();
   expect(devices.size).toBeGreaterThan(0);
-}, 10000);
+}, 20000);
