@@ -325,7 +325,7 @@ export class SolixApi {
   }
 
   private md5(s: string) {
-    this.logger.log(s);
+    this.logger.debug(s);
     return createHash('md5').update(Buffer.from(s)).digest('hex');
   }
 
@@ -350,7 +350,6 @@ export class SolixApi {
     data?: any,
     headers?: Record<string, string>,
   ) {
-    this.logger.log(JSON.stringify(data));
     const urlBuilder = new URL(endpoint, 'https://ankerpower-api-eu.anker.com');
     const url = urlBuilder.href;
 

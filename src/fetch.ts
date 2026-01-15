@@ -59,19 +59,22 @@ export async function fetchAndPublish(): Promise<Map<string, object>> {
     sites = siteHomepage.data.site_list;
   }
   let deviceList = await loggedInApi.getRelateAndBindDevices();
-  console.debug('deviceList', deviceList);
+  logger.debug('deviceList', deviceList);
 
   for (const site of sites) {
     const scenInfo = await loggedInApi.scenInfo(site.site_id);
     const deviceSn = scenInfo.data.solarbank_info.solarbank_list[0].device_sn;
-    console.debug(`Logging for device ${deviceSn}`, scenInfo);
+    logger.debug(
+      `Logging for device ${deviceSn}`,
+      JSON.stringify(scenInfo, null, '\t'),
+    );
     const energyAnalysis = await loggedInApi.energyAnalysis({
       siteId: site.site_id,
       deviceSn: device,
       type: 'day',
     });
-    console.debug('energyAnalysis', energyAnalysis);
-    console.debug('scenInfo', scenInfo);
+    logger.debug('energyAnalysis', JSON.stringify(energyAnalysis, null, '\t'));
+    logger.debug('scenInfo', scenInfo);
     devices.set(scenInfo.data.solarbank_info.solarbank_list[0].device_sn, {
       solar_pv1: Number(scenInfo.data.solarbank_info.solar_power_1),
       solar_pv2: Number(scenInfo.data.solarbank_info.solar_power_2),
@@ -92,9 +95,13 @@ export async function fetchAndPublish(): Promise<Map<string, object>> {
       to_home: Number(scenInfo.data.solarbank_info.total_output_power),
     });
     deviceList = await loggedInApi.getRelateAndBindDevices();
-    console.log(
+    logger.debug(
       'Current device stats',
-      devices.get(scenInfo.data.solarbank_info.solarbank_list[0].device_sn),
+      JSON.stringify(
+        devices.get(scenInfo.data.solarbank_info.solarbank_list[0].device_sn),
+        null,
+        '\t',
+      ),
     );
   }
   logger.log('Published.');
