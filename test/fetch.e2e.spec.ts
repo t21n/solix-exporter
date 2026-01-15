@@ -1,20 +1,19 @@
 /// <reference types="jest-extended" />
-import {  SolixApi } from '../src/api';
+import { SolixApi } from '../src/api';
+import { fetchAndPublish } from '../src/fetch';
 
 const config = {
   username: process.env.ANKER_USERNAME as string,
   password: process.env.ANKER_PASSWORD as string,
   country: process.env.ANKER_COUNTRY as string,
 };
-test('should login', async () => {
+test('should load device stats', async () => {
   const api = new SolixApi({
     username: config.username,
     password: config.password,
     country: config.country,
   });
-  const loginResponse = await api.login();
-  expect(loginResponse).not.toBeNull();
-
-  const loginData = loginResponse.data ?? null;
-  expect(loginData).not.toBeNull();
-});
+  await api.login();
+  const devices = await fetchAndPublish();
+  expect(devices.size).toBeGreaterThan(0);
+}, 10000);
