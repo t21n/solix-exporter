@@ -43,7 +43,7 @@ jobs:
       fail-fast: true
       matrix:
         node_version:
-          - 22
+          # Can not run in parallel due to Anker login limiting
           # renovate: datasource=docker depName=node
           - 24
         os:
