@@ -3,29 +3,25 @@ import { LoginResultResponse, SolixApi } from './api';
 import { getConfig } from './config';
 import { consoleLogger } from './logger';
 import { FilePersistence, Persistence } from './persistence';
-import express, { Express, Request, Response } from 'express';
-const app: Express = express();
-
-const config = getConfig();
-const logger = consoleLogger(config.verbose);
-const device = config.deviceSn;
-
-const api = new SolixApi({
-  username: config.username,
-  password: config.password,
-  country: config.country,
-  logger,
-});
-
-const persistence: Persistence<LoginResultResponse> = new FilePersistence(
-  config.loginStore,
-);
 
 function isLoginValid(loginData: LoginResultResponse, now: Date = new Date()) {
   return new Date(loginData.token_expires_at * 1000).getTime() > now.getTime();
 }
 
 export async function fetchAndPublish(): Promise<Map<string, object>> {
+  const config = getConfig();
+  const logger = consoleLogger(config.verbose);
+  const device = config.deviceSn;
+  const api = new SolixApi({
+    username: config.username,
+    password: config.password,
+    country: config.country,
+    logger,
+  });
+  const persistence: Persistence<LoginResultResponse> = new FilePersistence(
+    config.loginStore,
+  );
+
   const devices = new Map<string, object>();
   logger.log('Fetching data');
   let loginData = await persistence.retrieve();
