@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { LoginResultResponse, SolixApi } from './api';
+import { LoginResultResponse, SolixApi } from '@t21n/solix-api';
 import { getConfig } from './config';
 import { consoleLogger } from './logger';
 import { FilePersistence, Persistence } from './persistence';

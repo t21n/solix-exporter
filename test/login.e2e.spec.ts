@@ -1,5 +1,5 @@
 /// <reference types="jest-extended" />
-import { SolixApi } from '../src/api';
+import { SolixApi } from '@t21n/solix-api';
 
 const config = {
   username: process.env.ANKER_USERNAME as string,
