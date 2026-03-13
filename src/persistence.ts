@@ -1,4 +1,4 @@
-import { LoginResultResponse } from './api';
+import { LoginResultResponse } from '@t21n/solix-api';
 import { promises as fs } from 'fs';
 
 export interface Persistence<T> {

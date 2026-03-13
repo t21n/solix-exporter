@@ -1,5 +1,5 @@
 /// <reference types="jest-extended" />
-import { SolixApi } from '../src/api';
+import { SolixApi } from '@t21n/solix-api';
 import { fetchAndPublish } from '../src/fetch';
 
 const config = {

@@ -12,4 +12,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
+  moduleNameMapper: {
+    '^@t21n/solix-api$': '<rootDir>/../solix-api/src/index',
+  },
 };
