@@ -17,11 +17,11 @@
   "dependencies": {
     "async-mqtt": "^2.6.3",
     "dotenv": "^16.0.2",
-    "express": "^4.22.0",
+    "express": "^5.0.0",
     "node-fetch": "2.7.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
+    "@types/express": "^5.0.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.14",
     "@types/node-fetch": "^2.6.11",
