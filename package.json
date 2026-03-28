@@ -15,7 +15,7 @@
     "e2e": "jest"
   },
   "dependencies": {
-    "@t21n/solix-api": "0.2.6",
+    "@t21n/solix-api": "0.2.11",
     "async-mqtt": "^2.6.3",
     "dotenv": "^17.0.0",
     "express": "^5.0.0"

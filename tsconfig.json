@@ -3,10 +3,6 @@
     "target": "es2021",
     "module": "commonjs",
     "outDir": "./bin",
-    "baseUrl": ".",
-    "paths": {
-      "@t21n/solix-api": ["../solix-api/src/index"]
-    },
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
