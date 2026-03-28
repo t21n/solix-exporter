@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
+ 
+import express, { Express, Request, Response } from 'express';
 import { fetchDeviceStats } from './fetch';
 import { anonymizeConfig, getConfig } from './config';
 import { consoleLogger } from './logger';
-import { sleep } from './utils';
-import express, { Express, Request, Response } from 'express';
+import sleep from './utils';
+
 const app: Express = express();
 
 const config = getConfig();
@@ -13,9 +14,9 @@ const device = config.deviceSn;
 
 let devices: Map<string, object> = new Map<string, object>();
 
-export function restService() {
+function restService() {
   app.get('/', (req, res) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+     
     const deviceInfo: any = devices.get(device);
     if (deviceInfo) {
       const response = `
@@ -48,11 +49,13 @@ solar_now_grid ${Math.round(<number>deviceInfo.to_home)}
       `;
       res.type('txt');
       res.send(response);
+      // eslint-disable-next-line no-console
       console.log('No data available');
     }
   });
 
   app.listen(port, () => {
+    // eslint-disable-next-line no-console
     console.log(`Exporter listening on port ${port}`);
   });
 }
@@ -62,6 +65,7 @@ async function run(): Promise<void> {
   for (;;) {
     const start = new Date().getTime();
     try {
+      // eslint-disable-next-line no-await-in-loop
       devices = await fetchDeviceStats();
     } catch (e) {
       logger.warn('Failed fetching or publishing printer data', e);
@@ -69,6 +73,7 @@ async function run(): Promise<void> {
     const end = new Date().getTime() - start;
     const sleepInterval = config.pollInterval * 1000 - end;
     logger.log(`Sleeping for ${sleepInterval}ms...`);
+    // eslint-disable-next-line no-await-in-loop
     await sleep(sleepInterval);
   }
 }
