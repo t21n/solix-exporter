@@ -17,6 +17,7 @@ function stringEnvVar(
 ): string | undefined {
   const value = process.env[envVarName];
   if (value == null && defaultValue === undefined) {
+    // eslint-disable-next-line no-console
     console.error(`Missing env var ${envVarName}`);
     process.exit(1);
   }
@@ -32,10 +33,10 @@ function intEnvVar(
       return defaultValue;
     }
     return parseInt(value, 10);
-  } else {
+  } 
     const value = stringEnvVar(envVarName);
     return parseInt(value, 10);
-  }
+  
 }
 function boolEnvVar(
   envVarName: keyof typeof process['env'],
@@ -58,10 +59,10 @@ function arrayEnvVar(
       return defaultValue;
     }
     return value.split(',');
-  } else {
+  } 
     const value = stringEnvVar(envVarName);
     return value.split(',');
-  }
+  
 }
 export function getConfig() {
   configDotenv();
@@ -82,10 +83,10 @@ export function anonymizeConfig(
 ): ReturnType<typeof getConfig> {
   const newConfig = { ...config };
   const hideKeys: Array<keyof ReturnType<typeof getConfig>> = ['password'];
-  for (const key of hideKeys) {
+  hideKeys.forEach((key) => {
     if (config[key] != null) {
       (newConfig as any)[key] = '***';
     }
-  }
+  });
   return newConfig;
 }

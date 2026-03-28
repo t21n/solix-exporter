@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
+ 
 import { LoginResultResponse, SolixApi } from '@t21n/solix-api';
 import { getConfig } from './config';
 import { consoleLogger } from './logger';
@@ -57,6 +57,7 @@ export async function fetchAndPublish(): Promise<Map<string, object>> {
   let deviceList = await loggedInApi.getRelateAndBindDevices();
   logger.debug('deviceList', deviceList);
 
+  /* eslint-disable no-restricted-syntax, no-await-in-loop */
   for (const site of sites) {
     const scenInfo = await loggedInApi.scenInfo(site.site_id);
     const deviceSn = scenInfo.data.solarbank_info.solarbank_list[0].device_sn;
@@ -100,6 +101,7 @@ export async function fetchAndPublish(): Promise<Map<string, object>> {
       ),
     );
   }
+  /* eslint-enable no-restricted-syntax, no-await-in-loop */
   logger.log('Published.');
   return new Promise<Map<string, object>>((resolve, reject) => {
     resolve(devices);

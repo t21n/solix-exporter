@@ -20,9 +20,9 @@ export class FilePersistence<T> implements Persistence<T> {
     } catch (err) {
       if ((err as any).code === 'ENOENT') {
         return null;
-      } else {
+      } 
         throw err;
-      }
+      
     }
   }
 }
