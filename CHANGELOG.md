@@ -1,3 +1,15 @@
+## [1.2.1](https://github.com/t21n/solix-exporter/compare/v1.1.0...v1.2.1) (2026-03-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency dotenv to v17 ([423038f](https://github.com/t21n/solix-exporter/commit/423038f3e3bd76247c32a49569f0f2765425450a))
+* **deps:** update dependency express to v5 ([1d5f50d](https://github.com/t21n/solix-exporter/commit/1d5f50d726835ad23dc5b0cd45b57c069b207539))
+* package.json & package-lock.json to reduce vulnerabilities ([70669de](https://github.com/t21n/solix-exporter/commit/70669deb9e16ac7197432013103dc28976b08e63))
+* package.json & package-lock.json to reduce vulnerabilities ([d0eb28a](https://github.com/t21n/solix-exporter/commit/d0eb28a58499d551e2759ca5bbb7ef4e6e7a7377))
+
+
+
 # [1.2.0](https://github.com/t21n/solix-exporter/compare/v1.1.0...v1.2.0) (2026-03-30)
 
 
