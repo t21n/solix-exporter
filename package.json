@@ -27,7 +27,7 @@
     "@types/node-fetch": "^2.6.11",
     "@eslint/eslintrc": "^3.3.5",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.0.0",
+    "eslint": "^10.0.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-import-resolver-typescript": "^4.4.4",
