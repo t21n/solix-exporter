@@ -102,7 +102,7 @@ jobs:
 
       - name: Build Docker image
         id: build-image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
@@ -116,7 +116,7 @@ jobs:
 
       - name: Push To Docker Hub
         id: push-to-dockerhub-preview
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
@@ -132,7 +132,7 @@ jobs:
 
       - name: Push To Docker Hub
         id: push-to-dockerhub-tagged
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
