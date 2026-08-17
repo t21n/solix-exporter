@@ -18,3 +18,4 @@ coverage/
 **/yarn-error.log
 auth.data
 tmp/
+*.log
