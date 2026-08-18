@@ -100,10 +100,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
-      - name: Publish npm package
-        run: |
-          npm publish
-
       - name: Commit Changelog
         run: |
           git add CHANGELOG.md
